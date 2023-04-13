@@ -1,37 +1,31 @@
 package com.course.spring.sistemanotas.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.br.CPF;
-
-import java.time.LocalDate;
+import jakarta.persistence.Id;
 
 @Entity
-public class Aluno {
+public class Professor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @NotNull
+    private String nome;
+
     @CPF
-    @Column(unique = true) // Para não ter cpf repetido
+    @Column(unique = true)
     private String cpf;
 
     @Email
     @Column(unique = true)
     private String email;
 
-    @NotNull
-    private String nome;
-
-    @Column(name = "nascimento")
-    private LocalDate dataNascimento;
-
-    private String curso;
-
-    private Integer serie;
-
     private String telefone;
-
 }
